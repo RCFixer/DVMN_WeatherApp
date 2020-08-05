@@ -2,16 +2,17 @@ import requests
 
 
 def get_weather(url):
-    response = requests.get(url)
+    payload = {'nTqm':'', 'lang':'ru'}
+    response = requests.get(url, params=payload)
     response.raise_for_status()
     return response.text
 
 
 def main():
     urls = [
-        'http://wttr.in/london?nTqm&lang=ru',
-        'http://wttr.in/sheremetyevo?nTqm&lang=ru',
-        'http://wttr.in/cherepovets?nTqm&lang=ru'
+        'http://wttr.in/london',
+        'http://wttr.in/sheremetyevo',
+        'http://wttr.in/cherepovets'
     ]
     for url in urls:
         print(get_weather(url))
